@@ -1,0 +1,37 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 2],
+    "no-console": "off",
+    "no-unused-vars": "warn",
+    "no-shadow": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "import/newline-after-import": ["error", { "count": 2 }],
+    "no-underscore-dangle": ["warn", { "enforceInMethodNames": false }],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "export" },
+      { "blankLine": "never", "prev": "*", "next": "import" }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  }
+}

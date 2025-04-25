@@ -1,0 +1,708 @@
+{
+  "biases": [
+    {
+      "name": "Confirmation Bias",
+      "description": "The tendency to search for, interpret, and recall information in a way that confirms one's preexisting beliefs or hypotheses.",
+      "examples": [
+        "This proves what I've been saying all along",
+        "I knew this would happen",
+        "I only read news sources that align with my views"
+      ],
+      "patterns": [
+        "proves (what|that) (I|we) (said|thought|believed)",
+        "knew this would happen",
+        "just as I (said|predicted|expected)",
+        "I only listen to (sources|people) that make sense"
+      ]
+    },
+    {
+      "name": "Anchoring Bias",
+      "description": "The tendency to rely too heavily on the first piece of information encountered (the 'anchor') when making decisions.",
+      "examples": [
+        "The first price I saw was $100, so this seems like a good deal.",
+        "She said it was worth $1,000, so that's stuck in my head."
+      ],
+      "patterns": [
+        "first (price|offer|estimate) I (saw|heard|got)",
+        "(seems|feels) like a (good|bad) deal because of",
+        "starting point for negotiation",
+        "initial (value|number) influences"
+      ]
+    },
+    {
+      "name": "Availability Heuristic",
+      "description": "Overestimating the likelihood of events based on how easily examples come to mind.",
+      "examples": [
+        "Plane crashes are so common",
+        "I heard of someone getting robbed last week, it's getting worse"
+      ],
+      "patterns": [
+        "(I|we) (heard|saw|know) someone who",
+        "(seems|feels) like this happens (a lot|all the time)",
+        "(always|often) see this in the news",
+        "must be common because I can think of examples"
+      ]
+    },
+    {
+      "name": "Bandwagon Effect",
+      "description": "The tendency to adopt beliefs or behaviors because many others do the same.",
+      "examples": [
+        "Everyone is investing in crypto",
+        "All my friends think this is true"
+      ],
+      "patterns": [
+        "(everyone|all my friends|most people) (are|believe|do)",
+        "jumping on the bandwagon",
+        "going with the majority",
+        "following the crowd"
+      ]
+    },
+    {
+      "name": "Negativity Bias",
+      "description": "The tendency to give more weight to negative experiences or information than positive ones.",
+      "examples": [
+        "One bad review among dozens of good ones makes me doubt the product",
+        "I had one bad experience so I'll never go back"
+      ],
+      "patterns": [
+        "focus on the (negative|bad|problems)",
+        "one bad experience ruins everything",
+        "remember the criticism more than praise",
+        "worst parts stand out"
+      ]
+    },
+    {
+      "name": "Dunning-Kruger Effect",
+      "description": "When people with limited knowledge or competence in a given domain greatly overestimate their own knowledge or competence.",
+      "examples": [
+        "How hard could it be? I could do that easily",
+        "I read an article about this so I know as much as experts"
+      ],
+      "patterns": [
+        "how (hard|difficult) could it be",
+        "(I|we) could do that easily",
+        "experts overcomplicate things",
+        "doesn't take much to understand this"
+      ]
+    },
+    {
+      "name": "Sunk Cost Fallacy",
+      "description": "Continuing a behavior or endeavor due to previously invested resources (time, money, effort) despite new evidence suggesting it's no longer worthwhile.",
+      "examples": [
+        "I've already spent so much on this project, I can't quit now",
+        "We've been together for five years, I can't break up now"
+      ],
+      "patterns": [
+        "(I've|we've) already (spent|invested|put in)",
+        "can't quit now",
+        "too much invested to walk away",
+        "have to see it through"
+      ]
+    },
+    {
+      "name": "Halo Effect",
+      "description": "The tendency for positive impressions in one area to influence opinion in another area.",
+      "examples": [
+        "He's attractive so he must be smart too",
+        "That company makes great phones so their new laptop must be good"
+      ],
+      "patterns": [
+        "(he's|she's|they're) (attractive|successful) so",
+        "good at one thing means good at others",
+        "successful in (business|sports) so must be right about",
+        "trusted brand means trusted product"
+      ]
+    },
+    {
+      "name": "In-Group Bias",
+      "description": "The tendency to favor one's own group and its members over outsiders.",
+      "examples": [
+        "People from my country are more honest",
+        "Our team's fans are more passionate"
+      ],
+      "patterns": [
+        "our (team|group|country) is better",
+        "my (people|religion|political party) understands",
+        "outsiders don't get it",
+        "we know better than them"
+      ]
+    },
+    {
+      "name": "Optimism Bias",
+      "description": "The tendency to overestimate the likelihood of positive events and underestimate the likelihood of negative events.",
+      "examples": [
+        "I won't get sick",
+        "It won't happen to me",
+        "My startup will succeed while others fail"
+      ],
+      "patterns": [
+        "won't happen to (me|us)",
+        "(I'll|we'll) be the exception",
+        "those statistics don't apply to me",
+        "I have a good feeling about this"
+      ]
+    },
+    {
+      "name": "Hindsight Bias",
+      "description": "The tendency to perceive past events as having been predictable, despite having little or no objective basis for predicting them.",
+      "examples": [
+        "I knew that team would win",
+        "I could have predicted the market would crash"
+      ],
+      "patterns": [
+        "I knew (it|that) (would|wouldn't)",
+        "could have predicted",
+        "saw it coming",
+        "obvious in retrospect"
+      ]
+    },
+    {
+      "name": "Authority Bias",
+      "description": "The tendency to attribute greater accuracy to the opinion of an authority figure and be more influenced by that opinion.",
+      "examples": [
+        "My doctor said it, so it must be right",
+        "The CEO thinks this is the best approach"
+      ],
+      "patterns": [
+        "(expert|authority|boss|CEO) (said|believes|thinks)",
+        "trust the (science|experts|professionals)",
+        "people with credentials know better",
+        "they have a title so they must be right"
+      ]
+    },
+    {
+      "name": "Attentional Bias",
+      "description": "The tendency to pay attention to some things while simultaneously ignoring others.",
+      "examples": [
+        "I only notice the red cars on the road",
+        "I keep seeing ads for products I recently looked at"
+      ],
+      "patterns": [
+        "only notice things that",
+        "keep seeing (examples|instances|cases) of",
+        "focused on certain aspects",
+        "selective attention to"
+      ]
+    },
+    {
+      "name": "Belief Bias",
+      "description": "The tendency to evaluate the logical strength of an argument based on whether you believe the conclusion rather than how well the conclusion follows from the premises.",
+      "examples": [
+        "That can't be right because it doesn't match what I believe",
+        "The logic must be flawed because the conclusion seems wrong"
+      ],
+      "patterns": [
+        "can't be right because (I|we) (believe|know)",
+        "logic must be flawed because conclusion is wrong",
+        "doesn't match my understanding so it's incorrect",
+        "sounds wrong so the reasoning must be off"
+      ]
+    },
+    {
+      "name": "Curse of Knowledge",
+      "description": "When better-informed people find it difficult to think about problems from the perspective of lesser-informed people.",
+      "examples": [
+        "It's so obvious, I don't understand why you don't get it",
+        "Everyone knows how this works"
+      ],
+      "patterns": [
+        "it's (so|very|really) obvious",
+        "everyone knows this",
+        "can't believe you don't understand",
+        "basic knowledge that everyone has"
+      ]
+    },
+    {
+      "name": "Fundamental Attribution Error",
+      "description": "The tendency to attribute others' behaviors to their character or personality while attributing one's own behavior to circumstances.",
+      "examples": [
+        "He's late because he's disorganized, but I'm late because there was traffic",
+        "They failed because they didn't try hard enough"
+      ],
+      "patterns": [
+        "(he's|she's|they're) (lazy|careless|irresponsible)",
+        "failed because they didn't (try|work|care)",
+        "that's just how they are",
+        "it's their personality"
+      ]
+    },
+    {
+      "name": "Just-World Hypothesis",
+      "description": "The belief that people get what they deserve and deserve what they get.",
+      "examples": [
+        "They must have done something to deserve that",
+        "Hard work always pays off eventually"
+      ],
+      "patterns": [
+        "must have done something to deserve",
+        "karma will get them",
+        "what goes around comes around",
+        "(good|bad) things happen to (good|bad) people"
+      ]
+    },
+    {
+      "name": "Loss Aversion",
+      "description": "The tendency to prefer avoiding losses to acquiring equivalent gains.",
+      "examples": [
+        "I'd rather not lose $100 than gain $100",
+        "I'll keep this stock until it gets back to what I paid for it"
+      ],
+      "patterns": [
+        "rather not lose than gain",
+        "hate losing more than love winning",
+        "keep until I get back to what I paid",
+        "can't stand taking a loss"
+      ]
+    },
+    {
+      "name": "Overconfidence Bias",
+      "description": "Excessive confidence in one's own answers, predictions or abilities.",
+      "examples": [
+        "I'm certain I'm right about this",
+        "I'm definitely going to finish this by tomorrow"
+      ],
+      "patterns": [
+        "(I'm|we're) (certain|sure|positive)",
+        "no doubt in my mind",
+        "100% confident",
+        "absolutely going to"
+      ]
+    },
+    {
+      "name": "Planning Fallacy",
+      "description": "The tendency to underestimate the time, costs, and risks of future actions and overestimate the benefits.",
+      "examples": [
+        "This project will only take two weeks",
+        "I can easily prepare for the exam in one night"
+      ],
+      "patterns": [
+        "only take (two|a few|several) (days|weeks|months)",
+        "easily finish by",
+        "won't cost much",
+        "shouldn't be difficult"
+      ]
+    },
+    {
+      "name": "Projection Bias",
+      "description": "The tendency to unconsciously assume that others share the same or similar thoughts, beliefs, values, or positions.",
+      "examples": [
+        "Everyone thinks this way",
+        "Anyone would feel the same in my position"
+      ],
+      "patterns": [
+        "everyone (thinks|believes|feels) this way",
+        "anyone would (do|say|feel) the same",
+        "it's just common sense",
+        "normal people understand this"
+      ]
+    },
+    {
+      "name": "Recency Bias",
+      "description": "The tendency to place more importance on recent events than historic ones.",
+      "examples": [
+        "The stock has gone up the last three days, so it will continue rising",
+        "My last workout was great, so I'm in good shape"
+      ],
+      "patterns": [
+        "recent (success|failure|event) means",
+        "lately things have been",
+        "trends from the last (week|month)",
+        "what's happening now matters most"
+      ]
+    },
+    {
+      "name": "Self-Serving Bias",
+      "description": "The tendency to attribute positive events to one's own character but attribute negative events to external factors.",
+      "examples": [
+        "I got the promotion because I deserved it",
+        "I failed the test because it was unfair"
+      ],
+      "patterns": [
+        "(I|we) succeeded because (I'm|we're) (good|skilled|talented)",
+        "failed because of (circumstances|bad luck|others)",
+        "my success is earned, my failures are bad luck",
+        "take credit for wins but not losses"
+      ]
+    },
+    {
+      "name": "Spotlight Effect",
+      "description": "The tendency to overestimate how much others notice about you.",
+      "examples": [
+        "Everyone noticed my mistake",
+        "People will judge my outfit"
+      ],
+      "patterns": [
+        "everyone (noticed|saw|will remember)",
+        "people will judge my",
+        "all eyes were on me",
+        "everyone is paying attention to"
+      ]
+    },
+    {
+      "name": "Status Quo Bias",
+      "description": "The preference for things to stay the same.",
+      "examples": [
+        "I'll just stick with what I know",
+        "Better the devil you know than the devil you don't"
+      ],
+      "patterns": [
+        "stick with what (I|we) know",
+        "better the devil you know",
+        "prefer to keep things as they are",
+        "change is risky"
+      ]
+    }
+  ],
+  "fallacies": [
+    {
+      "name": "Ad Hominem",
+      "description": "Attacking your opponent's character or personal traits instead of engaging with their argument.",
+      "examples": [
+        "You're too young to understand this",
+        "He's biased because he works for them"
+      ],
+      "patterns": [
+        "too (young|old|ignorant|stupid) to understand",
+        "(he|she|they)('s| is| are) biased",
+        "what would you know about",
+        "you're just a"
+      ]
+    },
+    {
+      "name": "Appeal to Authority",
+      "description": "Using the opinion or position of an authority figure as evidence in your argument.",
+      "examples": [
+        "A scientist said it's true",
+        "The CEO believes it, so it must be right"
+      ],
+      "patterns": [
+        "(scientist|expert|CEO|professor) (said|claims|believes)",
+        "it must be true because",
+        "according to (respected|famous|well-known)",
+        "experts all agree that"
+      ]
+    },
+    {
+      "name": "Appeal to Emotion",
+      "description": "Manipulating an emotional response in place of a valid or compelling argument.",
+      "examples": [
+        "Think of the children!",
+        "If you care about people, you'll agree with me"
+      ],
+      "patterns": [
+        "think of the (children|families|victims)",
+        "if you (care about|love|respect) (people|freedom|justice)",
+        "how would you feel if",
+        "don't you have a heart"
+      ]
+    },
+    {
+      "name": "Appeal to Nature",
+      "description": "Arguing that because something is 'natural' it is therefore good, valid, justified, or better.",
+      "examples": [
+        "It's natural, so it must be good for you",
+        "Humans aren't meant to eat processed foods"
+      ],
+      "patterns": [
+        "it's (natural|organic|the way nature intended)",
+        "humans (aren't|weren't) meant to",
+        "that's how it is in nature",
+        "going against nature"
+      ]
+    },
+    {
+      "name": "Appeal to Tradition",
+      "description": "Arguing that because something is older or traditional it is therefore better.",
+      "examples": [
+        "This is how we've always done it",
+        "Traditional values have stood the test of time"
+      ],
+      "patterns": [
+        "how (we've|people have) always done it",
+        "traditional values",
+        "stood the test of time",
+        "worked for (generations|centuries|our ancestors)"
+      ]
+    },
+    {
+      "name": "Bandwagon Fallacy",
+      "description": "Arguing that because lots of people do something or believe something, it must be valid, true, or good.",
+      "examples": [
+        "Everyone is doing it",
+        "Most people believe this, so it must be true"
+      ],
+      "patterns": [
+        "everyone is doing it",
+        "most people believe",
+        "popular opinion is",
+        "majority of people think"
+      ]
+    },
+    {
+      "name": "Begging the Question",
+      "description": "A circular argument in which the conclusion is included in the premise.",
+      "examples": [
+        "This law is unjust because it's unfair",
+        "I'm right because I say so"
+      ],
+      "patterns": [
+        "because (it's|that's) (unfair|wrong|bad)",
+        "I'm right because I (say|know) so",
+        "it's true because it's factual",
+        "it's wrong because it's immoral"
+      ]
+    },
+    {
+      "name": "Black-or-White Fallacy",
+      "description": "Presenting two alternative options as the only possibilities, when in fact more possibilities exist.",
+      "examples": [
+        "Either you're with us or against us",
+        "America: love it or leave it"
+      ],
+      "patterns": [
+        "either (with|for) us or against us",
+        "love it or leave it",
+        "only two choices",
+        "there's no middle ground"
+      ]
+    },
+    {
+      "name": "Burden of Proof",
+      "description": "Saying that the burden of proof lies not with the person making the claim, but with someone else to disprove.",
+      "examples": [
+        "Prove that ghosts don't exist",
+        "I know this works, prove me wrong"
+      ],
+      "patterns": [
+        "prove that (it|they) don't exist",
+        "prove me wrong",
+        "disprove my claim",
+        "can't prove it isn't true"
+      ]
+    },
+    {
+      "name": "Composition/Division",
+      "description": "Assuming that what's true for a part is true for the whole, or that what's true for the whole is true for a part.",
+      "examples": [
+        "Every player on the team is excellent, so the team is excellent",
+        "That company has problems, so all its employees must be problematic"
+      ],
+      "patterns": [
+        "every (part|member|player) is, so the whole is",
+        "the (company|team|group) is, so each (employee|player|member) is",
+        "what's true of one is true of all",
+        "applies to the whole so applies to each part"
+      ]
+    },
+    {
+      "name": "False Cause",
+      "description": "Presuming that a real or perceived relationship between things means that one is the cause of the other.",
+      "examples": [
+        "I wore my lucky socks and we won",
+        "Crime rates have dropped while ice cream sales increased"
+      ],
+      "patterns": [
+        "happened after, so happened because of",
+        "correlated with, so caused by",
+        "when X, also Y, therefore X causes Y",
+        "followed by, so caused by"
+      ]
+    },
+    {
+      "name": "Fallacy Fallacy",
+      "description": "Presuming a claim is false because an argument for it contains a fallacy.",
+      "examples": [
+        "Your argument contains a fallacy, so your conclusion must be wrong",
+        "You used an appeal to emotion, so you must be incorrect"
+      ],
+      "patterns": [
+        "your argument (contains|has) a fallacy, so your conclusion is wrong",
+        "you used (bad logic|a fallacy), so you're incorrect",
+        "flawed argument means false conclusion",
+        "wrong reasoning means wrong conclusion"
+      ]
+    },
+    {
+      "name": "Genetic Fallacy",
+      "description": "Judging something as good or bad based on where it comes from or who said it.",
+      "examples": [
+        "That research comes from a biased institution",
+        "I don't trust anything from that news source"
+      ],
+      "patterns": [
+        "comes from (a biased|an untrustworthy|a questionable) source",
+        "don't trust anything from",
+        "consider the source",
+        "who's behind this information"
+      ]
+    },
+    {
+      "name": "Middle Ground Fallacy",
+      "description": "Assuming that a compromise or middle position between two extremes must be correct.",
+      "examples": [
+        "Some say climate change is a crisis, others say it's not happening, so the truth must be somewhere in between",
+        "Both sides have valid points, so the answer is in the middle"
+      ],
+      "patterns": [
+        "truth must be somewhere in between",
+        "both sides have valid points",
+        "compromise is always best",
+        "reality is in the middle"
+      ]
+    },
+    {
+      "name": "No True Scotsman",
+      "description": "Making what could be called an appeal to purity as a way to dismiss relevant criticisms or flaws in your argument.",
+      "examples": [
+        "No true Christian would do that",
+        "Real fans never criticize the team"
+      ],
+      "patterns": [
+        "no true (Christian|American|liberal|conservative) would",
+        "real (fans|believers|supporters) never",
+        "if you were a genuine (X), you wouldn't",
+        "anyone who really understands would agree"
+      ]
+    },
+    {
+      "name": "Personal Incredulity",
+      "description": "Saying that because you can't understand or imagine how something could be true, it must be false.",
+      "examples": [
+        "I can't understand how evolution works, so it must be false",
+        "That's too complex to be real"
+      ],
+      "patterns": [
+        "I can't understand how",
+        "too complex to be real",
+        "can't wrap my head around",
+        "doesn't make sense to me, so must be wrong"
+      ]
+    },
+    {
+      "name": "Special Pleading",
+      "description": "Moving the goalposts or making up exceptions when a claim is shown to be false.",
+      "examples": [
+        "All psychics can read minds, but not when there are skeptics around",
+        "The rules apply to everyone except me"
+      ],
+      "patterns": [
+        "can, but not when",
+        "applies to everyone except",
+        "normally works, just not this time",
+        "special exception in this case"
+      ]
+    },
+    {
+      "name": "Slippery Slope",
+      "description": "Asserting that if we allow A to happen, then Z will eventually happen too, therefore A should not happen.",
+      "examples": [
+        "If we allow same-sex marriage, next people will marry animals",
+        "If we ban assault rifles, soon all guns will be illegal"
+      ],
+      "patterns": [
+        "if we allow (A), next (B) will happen",
+        "leads to a slippery slope",
+        "first step toward",
+        "gateway to"
+      ]
+    },
+    {
+      "name": "Strawman",
+      "description": "Misrepresenting someone's argument to make it easier to attack.",
+      "examples": [
+        "You want open borders, which means letting criminals in",
+        "You're against this policy, so you don't care about children"
+      ],
+      "patterns": [
+        "you want (X), which means",
+        "you're against (X), so you don't care about",
+        "what you're really saying is",
+        "your position means you think"
+      ]
+    },
+    {
+      "name": "The Texas Sharpshooter",
+      "description": "Cherry-picking data clusters to suit an argument, or finding a pattern to fit a presumption.",
+      "examples": [
+        "Look at these cancer clusters near power lines",
+        "These three events prove my theory"
+      ],
+      "patterns": [
+        "look at these (clusters|examples|cases)",
+        "these (few|isolated|selected) events prove",
+        "focusing on patterns that support",
+        "these specific data points show"
+      ]
+    },
+    {
+      "name": "Tu Quoque",
+      "description": "Avoiding having to engage with criticism by turning it back on the accuser - answering criticism with criticism.",
+      "examples": [
+        "You criticize pollution but you drive a car",
+        "The company criticizing us has the same problems"
+      ],
+      "patterns": [
+        "you criticize (X) but you (do|have|use)",
+        "what about when you",
+        "you're being hypocritical",
+        "look who's talking"
+      ]
+    },
+    {
+      "name": "Ambiguity",
+      "description": "Using a double meaning or ambiguity of language to mislead or misrepresent the truth.",
+      "examples": [
+        "I'm not going to stop promoting freedom of speech",
+        "The senator said he supports the troops"
+      ],
+      "patterns": [
+        "depends what you mean by",
+        "technically I didn't say",
+        "could be interpreted different ways",
+        "deliberately vague language"
+      ]
+    },
+    {
+      "name": "Anecdotal Evidence",
+      "description": "Using personal experience or isolated examples instead of scientific evidence or statistical data.",
+      "examples": [
+        "My grandfather smoked and lived to 100",
+        "I know someone who didn't study and passed the exam"
+      ],
+      "patterns": [
+        "I know someone who",
+        "happened to a friend of mine",
+        "in my experience",
+        "I've seen cases where"
+      ]
+    },
+    {
+      "name": "Appeal to Ignorance",
+      "description": "Claiming something is true because it hasn't been proven false, or vice versa.",
+      "examples": [
+        "No one has proven God doesn't exist, so there must be a God",
+        "There's no evidence aliens don't visit Earth"
+      ],
+      "patterns": [
+        "no one has proven (X) doesn't exist",
+        "no evidence against",
+        "hasn't been disproven",
+        "can't prove it isn't true"
+      ]
+    },
+    {
+      "name": "Loaded Question",
+      "description": "Asking a question that has an assumption built into it so that it can't be answered without appearing guilty.",
+      "examples": [
+        "Have you stopped lying to your parents?",
+        "When did your company stop polluting the river?"
+      ],
+      "patterns": [
+        "have you stopped",
+        "when did you stop",
+        "how long have you been",
+        "why do you continue to"
+      ]
+    }
+  ]
+}
