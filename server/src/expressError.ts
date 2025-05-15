@@ -13,28 +13,28 @@ class ExpressError extends Error {
 
 /** 404 NOT FOUND error. */
 class NotFoundError extends ExpressError {
-  constructor(message: string = "Not Found") {
+  constructor(message: string = 'Not Found') {
     super(message, 404);
   }
 }
 
 /** 401 UNAUTHORIZED error. */
 class UnauthorizedError extends ExpressError {
-  constructor(message: string = "Unauthorized") {
+  constructor(message: string = 'Unauthorized') {
     super(message, 401);
   }
 }
 
 /** 400 BAD REQUEST error. */
 class BadRequestError extends ExpressError {
-  constructor(message: string = "Bad Request") {
+  constructor(message: string = 'Bad Request') {
     super(message, 400);
   }
 }
 
 /** 403 FORBIDDEN error. */
 class ForbiddenError extends ExpressError {
-  constructor(message: string = "Forbidden") {
+  constructor(message: string = 'Forbidden') {
     super(message, 403);
   }
 }

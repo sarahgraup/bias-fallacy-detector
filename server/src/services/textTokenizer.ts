@@ -1,4 +1,4 @@
-import nlp from "compromise";
+import nlp from 'compromise';
 
 interface ITextTokenizerOptions {
   language?: string;
@@ -9,7 +9,7 @@ export class TextTokenizer {
 
   constructor(options: ITextTokenizerOptions = {}) {
     this.options = {
-      language: "en",
+      language: 'en',
       ...options,
     };
   }
@@ -24,7 +24,7 @@ export class TextTokenizer {
     if (!text) return [];
 
     const doc = nlp(text);
-    return doc.sentences().out("array");
+    return doc.sentences().out('array');
   }
 
   /**
@@ -34,7 +34,7 @@ export class TextTokenizer {
    */
   splitIntoParagraphs(text: string): string[] {
     if (!text) return [];
-    //split by douvble newlines or more
+    // split by douvble newlines or more
     return text.split(/\n\s*\n|\r\n\s*\r\n/);
   }
 
@@ -48,7 +48,7 @@ export class TextTokenizer {
     if (!sentence) return [];
 
     const doc = nlp(sentence);
-    return doc.terms().out("array");
+    return doc.terms().out('array');
   }
 
   /**

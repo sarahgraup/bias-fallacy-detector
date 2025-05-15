@@ -1,5 +1,6 @@
-import { IBiasOrFallacy, IBiasesFallaciesData, ICompiledBiasOrFallacy, IDetection, TCognitivePatternType, TDetectionFilter, EDetectionFilter, IPatternMatch } from "@/utils";
-
+import {
+  IBiasOrFallacy, IBiasesFallaciesData, ICompiledBiasOrFallacy, IDetection, TCognitivePatternType, TDetectionFilter, EDetectionFilter, IPatternMatch,
+} from '@/utils';
 
 
 interface ICompiledData{
@@ -9,7 +10,7 @@ interface ICompiledData{
 
 /**
  * RuleBasedDetector is responsible for identifying cognitive biases and logical fallacies
- * in text using pattern matching and contextual analysis. It uses regular expressions to match 
+ * in text using pattern matching and contextual analysis. It uses regular expressions to match
  * patterns and calculates confidence scores based on matches and context clues.
  */
 class RuleBasedDetector {
@@ -45,8 +46,8 @@ class RuleBasedDetector {
 
   constructor(biasesFallaciesData: IBiasesFallaciesData) {
     this.compiledData = {
-      biases: this.compilePatterns(biasesFallaciesData.biases, "bias"),
-      fallacies: this.compilePatterns(biasesFallaciesData.fallacies, "fallacy"),
+      biases: this.compilePatterns(biasesFallaciesData.biases, 'bias'),
+      fallacies: this.compilePatterns(biasesFallaciesData.fallacies, 'fallacy'),
     };
   }
 
@@ -81,16 +82,14 @@ class RuleBasedDetector {
 
   private compilePatterns(
     items: IBiasOrFallacy[],
-    type: TCognitivePatternType
+    type?: TCognitivePatternType,
   ): ICompiledBiasOrFallacy[] {
-    return items.map((item) => {
-      return {
-        ...item,
-        compiledPatterns: item.patterns.map(
-          (pattern) => new RegExp(pattern, "i")
-        ),
-      };
-    });
+    return items.map((item) => ({
+      ...item,
+      compiledPatterns: item.patterns.map(
+        (pattern) => new RegExp(pattern, 'i'),
+      ),
+    }));
   }
 
   /**
@@ -120,12 +119,12 @@ class RuleBasedDetector {
    */
   private matchPatterns(
     sentence: string,
-    item: ICompiledBiasOrFallacy
+    item: ICompiledBiasOrFallacy,
   ): IPatternMatch[] {
     const matches: IPatternMatch[] = [];
 
     item.compiledPatterns.forEach((pattern) => {
-      //regexp match
+      // regexp match
       const match = sentence.match(pattern);
       if (match && match.index !== undefined) {
         matches.push({
@@ -171,21 +170,43 @@ class RuleBasedDetector {
 
   detectInSentence(
     sentence: string,
-    filter: TDetectionFilter = "all"
+    filter: TDetectionFilter = 'all',
   ): IDetection[] {
     const results: IDetection[] = [];
 
-    //check for biases if requested
+    // check for biases if requested
     if (filter === EDetectionFilter.All || filter === EDetectionFilter.Biases) {
       this.compiledData.biases.forEach((bias) => {
         const biasMatches = this.matchPatterns(sentence, bias);
         if (biasMatches.length > 0) {
           results.push({
-            type: "bias",
+            type: 'bias',
             name: bias.name,
             description: bias.description,
             matches: biasMatches,
             confidence: this.calculateConfidence(biasMatches, sentence, bias),
+          });
+        }
+      });
+    }
+
+    if (
+      filter === EDetectionFilter.All
+      || filter === EDetectionFilter.Fallacies
+    ) {
+      this.compiledData.fallacies.forEach((fallacy) => {
+        const fallacyMatches = this.matchPatterns(sentence, fallacy);
+        if (fallacyMatches.length > 0) {
+          results.push({
+            type: 'fallacy',
+            name: fallacy.name,
+            description: fallacy.description,
+            matches: fallacyMatches,
+            confidence: this.calculateConfidence(
+              fallacyMatches,
+              sentence,
+              fallacy,
+            ),
           });
         }
       });
@@ -214,26 +235,52 @@ class RuleBasedDetector {
    * const sentence = "I knew this would happen because the evidence confirms it.";
    * const bias = {
    *   // ...other properties
-   *   context_clues: ["evidence", "confirms"]
+   *   context_clues: ["evidence", "confirms"],
+   *    "confidence_modifiers":{
+        "high_confidence_terms":["certainly", "definitely", "obviously"],
+        "negation_terms":["not", "never", "doesn't"]
+      }
    * };
    *
    * // Output: 0.7 (0.5 base + 0.1 for one match + 0.05*2 for two context clues)
    */
-  private calculateConfidence(matches: IPatternMatch[], sentence: string, item: ICompiledBiasOrFallacy): number {
-    let confidence = 0.5; //base
+  private calculateConfidence(
+    matches: IPatternMatch[],
+    sentence: string,
+    item: ICompiledBiasOrFallacy,
+  ): number {
+    let confidence = 0.5; // base
 
-    //increase confidence based on number of matches
+    // increase confidence based on number of matches
     confidence += matches.length * 0.1;
 
-    //check for context clues to increase confidence
-    if (item.context_clues && item.context_clues.length > 0) {
-      const clueMatches = item.context_clues.filter(clue => 
-        sentence.toLowerCase().includes(clue.toLowerCase())
-      );
+    // check for context clues to increase confidence
+    if (item.contextClues && item.contextClues.length > 0) {
+      const clueMatches = item.contextClues.filter((clue) => sentence.toLowerCase().includes(clue.toLowerCase()));
 
       confidence += clueMatches.length * 0.05;
-
     }
-    return Math.min(0.95, confidence);
+    // check for high confidence terms
+    if (item.confidenceModifiers?.highConfidenceTerms) {
+      const highConfidenceMatches = item.confidenceModifiers.highConfidenceTerms.filter((term) => sentence.toLowerCase().includes(term.toLowerCase()));
+      confidence += highConfidenceMatches.length * 0.05;
+    }
+
+    if (item.confidenceModifiers?.negationTerms) {
+      const negationMatches = item.confidenceModifiers.negationTerms.filter(
+        (term) => sentence.toLowerCase().includes(term.toLowerCase()),
+      );
+      confidence -= negationMatches.length * 0.1;
+    }
+    // ensure confidence doesnt go below 0.1n
+
+    return Math.min(Math.max(0.1, confidence), 0.95);
   }
+
+  // private isClueNearMatch(sentence: string, match: IPatternMatch, clue: string, windowSize: number = 5): boolean{
+  //   const matchStart = match.index;
+  //   const matchEnd = match.index + match.length;
+  // }
 }
+
+export default RuleBasedDetector;
