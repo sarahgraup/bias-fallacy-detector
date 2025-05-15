@@ -13,7 +13,12 @@
         "knew this would happen",
         "just as I (said|predicted|expected)",
         "I only listen to (sources|people) that make sense"
-      ]
+      ],
+      "context_clues":["evidence", "validates", "confirms", "all along", "as I suspected"],
+      "confidence_modifiers":{
+        "high_confidence_terms":["certainly", "definitely", "obviously"],
+        "negation_terms":["not", "never", "doesn't"]
+      }
     },
     {
       "name": "Anchoring Bias",
