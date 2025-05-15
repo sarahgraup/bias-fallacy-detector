@@ -1,0 +1,8 @@
+# Ignore all test-related files
+**/src/__tests__/**
+**/src/__mocks__/**
+*.test.ts
+*.spec.ts
+jest.config.ts
+config.ts
+expressError.ts
