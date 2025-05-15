@@ -1,7 +1,12 @@
 /**
  * Defines the possible types of cognitive patterns that can be detected
  */
-export type TCognitivePatternType = "bias" | "fallacy";
+export type TCognitivePatternType = 'bias' | 'fallacy';
+
+export interface IConfidenceModifiers {
+  highConfidenceTerms?: string[];
+  negationTerms?: string[];
+}
 
 /**
  * Base interface for a bias or fallacy definition
@@ -11,7 +16,9 @@ export interface IBiasOrFallacy {
   description: string;
   examples: string[];
   patterns: string[];
-  context_clues: string[];
+  contextClues: string[];
+  confidenceModifiers?: IConfidenceModifiers;
+
 }
 
 /**
@@ -20,7 +27,6 @@ export interface IBiasOrFallacy {
 export interface ICompiledBiasOrFallacy extends IBiasOrFallacy {
   compiledPatterns: RegExp[];
 }
-
 
 /**
  * Interface for the configuration data containing biases and fallacies
@@ -48,7 +54,7 @@ export interface IPatternMatch {
 
 // represents detected cognitive pattern (bias or fallacy)
 export interface IDetection {
-  type: "bias" | "fallacy";
+  type: 'bias' | 'fallacy';
   name: string;
   description: string;
   matches: IPatternMatch[];
@@ -67,7 +73,7 @@ export interface ISentenceDetection {
 /**
  * Types of detection filters
  */
-export type TDetectionFilter = "all" | "biases" | "fallacies";
+export type TDetectionFilter = 'all' | 'biases' | 'fallacies';
 
 /**
  * Summary of detected biases or fallacies
@@ -97,6 +103,6 @@ export enum EDetectionFilter {
 }
 
 export enum ECognitivePatternType {
-  Bias = "bias",
-  Fallacy = "fallacy",
+  Bias = 'bias',
+  Fallacy = 'fallacy',
 }
