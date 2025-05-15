@@ -1,18 +1,20 @@
-import type {Config} from 'jest';
+import type { Config } from 'jest';
+
 const config: Config = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-  roots: ["src"],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['src'],
   transform: {
-    "^.+\\.ts?$": "ts-jest",
+    '^.+\\.ts?$': 'ts-jest',
   },
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.ts?$",
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts?$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   // Create a mock for fs/promises
   moduleNameMapper: {
-    "^fs/promises$": "<rootDir>/src/__mocks__/fsMock.ts",
-    "^@/(.*)$": "<rootDir>/src/$1",
+    '^fs/promises$': '<rootDir>/src/__mocks__/fsMock.ts',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
-  collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts"],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
 };
+
 export default config;
