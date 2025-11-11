@@ -1,46 +1,46 @@
+
 {
   "compilerOptions": {
-    "experimentalDecorators": true /* Enable experimental support for legacy experimental decorators. */,
-    "target": "es2020" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "outDir": "dist" /* Specify an output folder for all emitted files. */,
-    "module": "CommonJS" /* Specify what module code is generated. */,
-    "rootDir": "src" /* Specify the root folder within your source files. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
-    "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
+    /* Language and Environment */
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* Module Resolution */
+    "moduleResolution": "node",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"],
-      "server": ["./server"], // Maps 'server' to 'src/server.ts'
-      "config": ["./config"], // Maps 'config' to 'src/config.ts'
-      "expressError": ["./expressError"], // Map to the actual path
-      "routes/*": ["routes/*"],
-      "utils/*": ["utils/*"],
-      "services/*": ["services/*"],
-      "data/*": ["data/*"]
+      "@detectors/*": ["detectors/*"],
+      "@agents/*": ["agents/*"],
+      "@workflows/*": ["workflows/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
+      "@cli/*": ["cli/*"]
     },
-    "resolveJsonModule": true /* Enable importing .json files. */,
-    "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
-    "sourceMap": true /* Create source map files for emitted JavaScript files. */,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
 
-    "noEmit": false /* Disable emitting files from a compilation. */,
-    "downlevelIteration": true /* Emit more compliant, but verbose and less performant JavaScript for iteration. */,
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
     /* Type Checking */
-    "declaration": false,
-    "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
-    "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
-    "noImplicitThis": true /* Enable error reporting when 'this' is given the type 'any'. */,
-    "noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
-    "noFallthroughCasesInSwitch": true /* Enable error reporting for fallthrough cases in switch statements. */,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
 
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    /* Emit */
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "removeComments": false,
+
+    /* Interop Constraints */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  },
-  "include": ["src/**/*.ts", "src/**/__tests__/**/*.ts", "src/**/__mocks__/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

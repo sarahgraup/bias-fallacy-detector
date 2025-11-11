@@ -1,4 +1,4 @@
-import { TextCleaner } from '../../services/TextCleaner';
+import { TextCleaner } from '../../utils/TextCleaner';
 
 describe('TextCleaner', () => {
   let cleaner: TextCleaner;

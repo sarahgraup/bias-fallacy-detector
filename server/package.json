@@ -5,11 +5,13 @@
   "main": "src/server.ts",
   "scripts": {
     "lint": "eslint . --fix",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "api": "ts-node -r tsconfig-paths/register src/server.ts",
+    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
+    "dev:api": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
     "build": "tsc",
-    "start": "node --loader ts-node/esm src/server.ts",
-    "dev": "node --loader ts-node/esm src/server.ts",
-    "serve": "node dist/server.js",
-    "watch": "tsc -w",
+    "serve": "node dist/index.js",
+    "serve:api": "node dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -17,12 +19,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@langchain/anthropic": "^0.3.0",
+    "@langchain/core": "^0.3.0",
+    "@langchain/langgraph": "^0.2.0",
+    "@langchain/openai": "^0.3.17",
     "axios": "^1.7.5",
+    "cheerio": "^1.0.0",
     "compromise": "^14.14.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "eslint": "^9.25.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.1",
+    "openai": "^6.4.0",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.27.1",
@@ -30,6 +40,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.14",
+    "@types/multer": "^1.4.0",
     "@types/node": "^22.15.15",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^8.3.0",

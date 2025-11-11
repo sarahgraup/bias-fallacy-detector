@@ -1,8 +1,15 @@
-import RuleBasedDetector from '@/services/RuleBasedDetector';
-import TextTokenizer from '@/services/TextTokenizer';
-import { IBiasesFallaciesData, TCognitivePatternType, EDetectionFilter, ISentenceDetection, IPatternMatch, IBiasOrFallacy } from '@/utils';
+import RuleBasedDetector from "@/detectors/RuleBasedDetector";
+import TextTokenizer from "@/utils/TextTokenizer";
+import {
+  IBiasesFallaciesData,
+  TCognitivePatternType,
+  EDetectionFilter,
+  ISentenceDetection,
+  IPatternMatch,
+  IBiasOrFallacy,
+} from "@/utils/types";
 // Mock TextTokenizer
-jest.mock('../../services/TextTokenizer');
+jest.mock("../../services/TextTokenizer");
 
 describe("RuleBasedDetector", () => {
   let detector: RuleBasedDetector;
@@ -758,7 +765,7 @@ describe("RuleBasedDetector", () => {
 
 //       // Compile bias
 //       const compiledBias = ruleBasedDetectorAny.compilePatterns(
-//         testData.biases, 
+//         testData.biases,
 //         'bias' as TCognitivePatternType
 //       )[0];
 
@@ -775,7 +782,7 @@ describe("RuleBasedDetector", () => {
 
 //     test('should find multiple pattern matches in a single sentence', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       // Create a compiled bias with two patterns that will both match
 //       const compiledBias = {
 //         compiledPatterns: [
@@ -783,29 +790,29 @@ describe("RuleBasedDetector", () => {
 //           /today/i
 //         ]
 //       };
-      
+
 //       // Test matchPatterns
 //       const sentence = 'I knew this would happen today';
 //       const matches = ruleBasedDetectorAny.matchPatterns(sentence, compiledBias);
-      
+
 //       expect(matches).toHaveLength(2);
 //       expect(matches[0].matched).toBe('knew this would happen');
 //       expect(matches[1].matched).toBe('today');
 //     });
-    
+
 //     test('should return empty array when no patterns match the text', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       // First compile the bias
 //       const compiledBias = ruleBasedDetectorAny.compilePatterns(
-//         testData.biases, 
+//         testData.biases,
 //         'bias' as TCognitivePatternType
 //       )[0];
-      
+
 //       // Test matchPatterns with non-matching text
 //       const sentence = 'The weather is nice today.';
 //       const matches = ruleBasedDetectorAny.matchPatterns(sentence, compiledBias);
-      
+
 //       expect(matches).toHaveLength(0);
 //       expect(Array.isArray(matches)).toBe(true);
 //     });
@@ -814,7 +821,7 @@ describe("RuleBasedDetector", () => {
 //   describe('calculateConfidence function', () => {
 //     test('should calculate baseline confidence based on number of matches', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const matches: IPatternMatch[] = [
 //         {
 //           pattern: '/test/i',
@@ -823,21 +830,21 @@ describe("RuleBasedDetector", () => {
 //           length: 4
 //         }
 //       ];
-      
+
 //       const sentence = "Test sentence";
 //       const item = {
 //         contextClues: [] // No context clues
 //       };
-      
+
 //       const confidence = ruleBasedDetectorAny.calculateConfidence(matches, sentence, item);
-      
+
 //       // Base 0.5 + 0.1 for one match
 //       expect(confidence).toBeCloseTo(0.6);
 //     });
 
 //     test('should increase confidence for context clues', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const matches: IPatternMatch[] = [
 //         {
 //           pattern: '/test/i',
@@ -846,21 +853,21 @@ describe("RuleBasedDetector", () => {
 //           length: 4
 //         }
 //       ];
-      
+
 //       const sentence = "Test sentence with evidence";
 //       const item = {
 //         contextClues: ["evidence", "confirms", "proves"]
 //       };
-      
+
 //       const confidence = ruleBasedDetectorAny.calculateConfidence(matches, sentence, item);
-      
+
 //       // Base 0.5 + 0.1 for one match + 0.05 for one context clue
 //       expect(confidence).toBeCloseTo(0.65);
 //     });
 
 //     test('should increase confidence for high confidence terms', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const matches: IPatternMatch[] = [
 //         {
 //           pattern: '/test/i',
@@ -869,7 +876,7 @@ describe("RuleBasedDetector", () => {
 //           length: 4
 //         }
 //       ];
-      
+
 //       const sentence = "This is definitely a test sentence";
 //       const item = {
 //         contextClues: [],
@@ -877,16 +884,16 @@ describe("RuleBasedDetector", () => {
 //           highConfidenceTerms: ["certainly", "definitely", "obviously"]
 //         }
 //       };
-      
+
 //       const confidence = ruleBasedDetectorAny.calculateConfidence(matches, sentence, item);
-      
+
 //       // Base 0.5 + 0.1 for one match + 0.05 for one high confidence term
 //       expect(confidence).toBeCloseTo(0.65);
 //     });
 
 //     test('should decrease confidence for negation terms', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const matches: IPatternMatch[] = [
 //         {
 //           pattern: '/test/i',
@@ -895,7 +902,7 @@ describe("RuleBasedDetector", () => {
 //           length: 4
 //         }
 //       ];
-      
+
 //       const sentence = "This is not a test sentence";
 //       const item = {
 //         contextClues: [],
@@ -903,16 +910,16 @@ describe("RuleBasedDetector", () => {
 //           negationTerms: ["not", "never", "doesn't"]
 //         }
 //       };
-      
+
 //       const confidence = ruleBasedDetectorAny.calculateConfidence(matches, sentence, item);
-      
+
 //       // Base 0.5 + 0.1 for one match - 0.1 for one negation term
 //       expect(confidence).toBeCloseTo(0.5);
 //     });
 
 //     test('should handle combined effects of context clues, high confidence terms, and negation', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const matches: IPatternMatch[] = [
 //         {
 //           pattern: '/test/i',
@@ -921,7 +928,7 @@ describe("RuleBasedDetector", () => {
 //           length: 4
 //         }
 //       ];
-      
+
 //       const sentence = "This is definitely not a test with evidence";
 //       const item = {
 //         contextClues: ["evidence", "confirms", "proves"],
@@ -930,16 +937,16 @@ describe("RuleBasedDetector", () => {
 //           negationTerms: ["not", "never", "doesn't"]
 //         }
 //       };
-      
+
 //       const confidence = ruleBasedDetectorAny.calculateConfidence(matches, sentence, item);
-      
+
 //       // Base 0.5 + 0.1 for one match + 0.05 for one context clue + 0.05 for one high confidence term - 0.1 for one negation term
 //       expect(confidence).toBeCloseTo(0.55);
 //     });
 
 //     test('should ensure confidence stays within bounds (0.1 to 0.95)', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       // Case 1: Many negative terms should floor at 0.1
 //       const lowSentence =
 //         "not never doesn't won't can't shouldn't wouldn't test here";
@@ -947,24 +954,23 @@ describe("RuleBasedDetector", () => {
 //       const lowMatches: IPatternMatch[] = [
 //         { pattern: '/test/i', matched: 'test', index: matchIndex, length: 4 }
 //       ];
-      
-      
+
 //       const lowItem = {
 //         contextClues: [],
 //         confidenceModifiers: {
 //           negationTerms: ["not", "never", "doesn't", "won't", "can't", "shouldn't", "wouldn't"]
 //         }
 //       };
-      
+
 //       const lowConfidence = ruleBasedDetectorAny.calculateConfidence(lowMatches, lowSentence, lowItem);
 //       expect(lowConfidence).toBeGreaterThanOrEqual(0.1);
 //       expect(lowConfidence).toBeLessThanOrEqual(0.4);
-      
+
 //       // Case 2: Many positive terms should cap at 0.95
 //       const highMatches: IPatternMatch[] = Array(10).fill({
 //         pattern: '/test/i', matched: 'test', index: 0, length: 4
 //       });
-      
+
 //       const highSentence = "This is definitely certainly obviously absolutely 100% evidence confirms proves validates test";
 //       const highItem = {
 //         contextClues: ["evidence", "confirms", "proves", "validates"],
@@ -972,7 +978,7 @@ describe("RuleBasedDetector", () => {
 //           highConfidenceTerms: ["definitely", "certainly", "obviously", "absolutely"]
 //         }
 //       };
-      
+
 //       const highConfidence = ruleBasedDetectorAny.calculateConfidence(highMatches, highSentence, highItem);
 //       expect(highConfidence).toBeCloseTo(0.95);
 //     });
@@ -981,28 +987,28 @@ describe("RuleBasedDetector", () => {
 //   describe('isClueNearMatch function', () => {
 //     test('should identify when clues are near the match', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const match: IPatternMatch = {
 //         pattern: '/test/i',
 //         matched: 'test',
 //         index: 20, // Position in the middle of the sentence
 //         length: 4
 //       };
-      
+
 //       const sentence = "This sentence has some evidence of a test right in the middle.";
-      
+
 //       // Check for a clue that is near
 //       const nearResult = ruleBasedDetectorAny.isClueNearMatch(sentence, match, "evidence", 5);
 //       expect(nearResult).toBe(true);
-      
+
 //       // Check for a clue that is far away
 //       const farResult = ruleBasedDetectorAny.isClueNearMatch(sentence, match, "This", 2);
 //       expect(farResult).toBe(false);
 //     });
-    
+
 //     test('should handle edge cases for window bounds', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       // Test with match at the beginning
 //       const startMatch: IPatternMatch = {
 //         pattern: '/test/i',
@@ -1010,11 +1016,11 @@ describe("RuleBasedDetector", () => {
 //         index: 0,
 //         length: 4
 //       };
-      
+
 //       const startSentence = "test sentence with some context.";
 //       const startResult = ruleBasedDetectorAny.isClueNearMatch(startSentence, startMatch, "context", 10);
 //       expect(startResult).toBe(true);
-      
+
 //       // Test with match at the end
 //       const endMatch: IPatternMatch = {
 //         pattern: '/test/i',
@@ -1022,7 +1028,7 @@ describe("RuleBasedDetector", () => {
 //         index: 24,
 //         length: 4
 //       };
-      
+
 //       const endSentence = "Sentence with context and test";
 //       const endResult = ruleBasedDetectorAny.isClueNearMatch(endSentence, endMatch, "context", 10);
 //       expect(endResult).toBe(true);
@@ -1040,72 +1046,72 @@ describe("RuleBasedDetector", () => {
 //       expect(results[0].matches).toHaveLength(1);
 //       expect(results[0].confidence).toBeGreaterThan(0.5);
 //     });
-    
+
 //     test('should detect ad hominem fallacy in a sentence', () => {
 //       const sentence = "You're too young to understand complex issues.";
 //       const results = detector.detectInSentence(sentence);
-      
+
 //       expect(results).toHaveLength(1);
 //       expect(results[0].type).toBe('fallacy');
 //       expect(results[0].name).toBe('Ad Hominem');
 //       expect(results[0].matches).toHaveLength(1);
 //       expect(results[0].confidence).toBeGreaterThan(0.5);
 //     });
-    
+
 //     test('should not detect anything in neutral sentences', () => {
 //       const sentence = "The weather is nice today.";
 //       const results = detector.detectInSentence(sentence);
-      
+
 //       expect(results).toHaveLength(0);
 //     });
-    
+
 //     test('should filter detection by type', () => {
 //       const sentenceWithBoth = "I knew this would happen and you're too young to understand.";
-      
+
 //       const biasResults = detector.detectInSentence(sentenceWithBoth, EDetectionFilter.Biases);
 //       expect(biasResults).toHaveLength(1);
 //       expect(biasResults[0].type).toBe('bias');
-      
+
 //       const fallacyResults = detector.detectInSentence(sentenceWithBoth, EDetectionFilter.Fallacies);
 //       expect(fallacyResults).toHaveLength(1);
 //       expect(fallacyResults[0].type).toBe('fallacy');
-      
+
 //       const allResults = detector.detectInSentence(sentenceWithBoth, EDetectionFilter.All);
 //       expect(allResults).toHaveLength(2);
 //     });
-    
+
 //     test('should handle empty or null input', () => {
 //       expect(detector.detectInSentence('')).toHaveLength(0);
 //       expect(detector.detectInSentence(null as unknown as string)).toHaveLength(0);
 //     });
-    
+
 //     test('should increase confidence with context clues', () => {
 //       const sentence1 = "I knew this would happen.";
 //       const sentence2 = "I knew this would happen because the evidence confirms it.";
-      
+
 //       const results1 = detector.detectInSentence(sentence1);
 //       const results2 = detector.detectInSentence(sentence2);
-      
+
 //       expect(results1[0].confidence).toBeLessThan(results2[0].confidence);
 //     });
-    
+
 //     test('should adjust confidence based on high confidence terms', () => {
 //       const sentence1 = "I knew this would happen.";
 //       const sentence2 = "I definitely knew this would happen.";
-      
+
 //       const results1 = detector.detectInSentence(sentence1);
 //       const results2 = detector.detectInSentence(sentence2);
-      
+
 //       expect(results1[0].confidence).toBeLessThan(results2[0].confidence);
 //     });
-    
+
 //     test('should decrease confidence when negation terms are present', () => {
 //       const sentence1 = "I knew this would happen.";
 //       const sentence2 = "I never knew this would happen.";
-      
+
 //       const results1 = detector.detectInSentence(sentence1);
 //       const results2 = detector.detectInSentence(sentence2);
-      
+
 //       // The second sentence has a negation, so confidence should be lower
 //       expect(results1[0].confidence).toBeGreaterThan(results2[0].confidence);
 //     });
@@ -1114,42 +1120,42 @@ describe("RuleBasedDetector", () => {
 //   describe('detectInText function', () => {
 //     test('should detect multiple instances of bias and fallacy in text', () => {
 //       const text = "I knew this would happen. You're too young to understand. Just as I predicted.";
-      
+
 //       mockTokenizer.splitIntoSentences.mockReturnValue([
 //         "I knew this would happen.",
 //         "You're too young to understand.",
 //         "Just as I predicted."
 //       ]);
-      
+
 //       const results = detector.detectInText(text, mockTokenizer);
-      
+
 //       expect(results).toHaveLength(3);
 //       expect(results[0].sentence).toBe("I knew this would happen.");
 //       expect(results[0].detections[0].type).toBe('bias');
 //       expect(results[0].detections[0].name).toBe('Confirmation Bias');
-      
+
 //       expect(results[1].sentence).toBe("You're too young to understand.");
 //       expect(results[1].detections[0].type).toBe('fallacy');
 //       expect(results[1].detections[0].name).toBe('Ad Hominem');
-      
+
 //       expect(results[2].sentence).toBe("Just as I predicted.");
 //       expect(results[2].detections[0].type).toBe('bias');
 //       expect(results[2].detections[0].name).toBe('Confirmation Bias');
 //     });
-    
+
 //     test('should handle empty or null input', () => {
 //       expect(detector.detectInText('', mockTokenizer)).toHaveLength(0);
 //       expect(detector.detectInText(null as unknown as string, mockTokenizer)).toHaveLength(0);
 //     });
-    
+
 //     test('should return empty array for text with no biases or fallacies', () => {
 //       const text = "The weather is nice today. I hope it stays this way.";
-      
+
 //       mockTokenizer.splitIntoSentences.mockReturnValue([
 //         "The weather is nice today.",
 //         "I hope it stays this way."
 //       ]);
-      
+
 //       const results = detector.detectInText(text, mockTokenizer);
 //       expect(results).toHaveLength(0);
 //     });
@@ -1192,35 +1198,35 @@ describe("RuleBasedDetector", () => {
 //           }]
 //         }
 //       ];
-      
+
 //       const summary = detector.generateSummary(detections);
-      
+
 //       expect(summary.biasesFound).toHaveLength(1);
 //       expect(summary.fallaciesFound).toHaveLength(1);
-      
+
 //       expect(summary.biasesFound[0].name).toBe('Confirmation Bias');
 //       expect(summary.biasesFound[0].count).toBe(2);
 //       expect(summary.biasesFound[0].confidence).toBe(0.8); // Max confidence
-      
+
 //       expect(summary.fallaciesFound[0].name).toBe('Ad Hominem');
 //       expect(summary.fallaciesFound[0].count).toBe(1);
 //       expect(summary.fallaciesFound[0].confidence).toBe(0.7);
 //     });
-    
+
 //     test('should handle empty detections array', () => {
 //       const summary = detector.generateSummary([]);
-      
+
 //       expect(summary.biasesFound).toHaveLength(0);
 //       expect(summary.fallaciesFound).toHaveLength(0);
 //     });
-    
+
 //     test('should handle null input', () => {
 //       const summary = detector.generateSummary(null as unknown as ISentenceDetection[]);
-      
+
 //       expect(summary.biasesFound).toHaveLength(0);
 //       expect(summary.fallaciesFound).toHaveLength(0);
 //     });
-    
+
 //     test('should sort biases and fallacies by count', () => {
 //       // Create detections with different counts
 //       const detections: ISentenceDetection[] = [
@@ -1291,17 +1297,17 @@ describe("RuleBasedDetector", () => {
 //           }]
 //         }
 //       ];
-      
+
 //       const summary = detector.generateSummary(detections);
-      
+
 //       // Confirmation Bias should be first as it appears twice
 //       expect(summary.biasesFound[0].name).toBe('Confirmation Bias');
 //       expect(summary.biasesFound[0].count).toBe(2);
-      
+
 //       // Ad Hominem should be first in fallacies as it appears twice
 //       expect(summary.fallaciesFound[0].name).toBe('Ad Hominem');
 //       expect(summary.fallaciesFound[0].count).toBe(2);
-      
+
 //       // Slippery Slope should be after Ad Hominem
 //       expect(summary.fallaciesFound[1].name).toBe('Slippery Slope');
 //       expect(summary.fallaciesFound[1].count).toBe(1);
@@ -1311,7 +1317,7 @@ describe("RuleBasedDetector", () => {
 //   describe('analyzeContext function', () => {
 //     test('should increase confidence for repeated biases/fallacies in adjacent sentences', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const detections: ISentenceDetection[] = [
 //         {
 //           sentence: "I knew this would happen.",
@@ -1336,17 +1342,17 @@ describe("RuleBasedDetector", () => {
 //           }]
 //         }
 //       ];
-      
+
 //       const enhancedDetections = ruleBasedDetectorAny.analyzeContext(detections);
-      
+
 //       // Confidence should be increased for both sentences since they have the same bias
 //       expect(enhancedDetections[0].detections[0].confidence).toBeGreaterThan(0.6);
 //       expect(enhancedDetections[1].detections[0].confidence).toBeGreaterThan(0.7);
 //     });
-    
+
 //     test('should not modify confidence for unrelated biases/fallacies', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const detections: ISentenceDetection[] = [
 //         {
 //           sentence: "I knew this would happen.",
@@ -1371,17 +1377,17 @@ describe("RuleBasedDetector", () => {
 //           }]
 //         }
 //       ];
-      
+
 //       const enhancedDetections = ruleBasedDetectorAny.analyzeContext(detections);
-      
+
 //       // Confidence should remain the same since they are different bias/fallacy types
 //       expect(enhancedDetections[0].detections[0].confidence).toBeCloseTo(0.6);
 //       expect(enhancedDetections[1].detections[0].confidence).toBeCloseTo(0.7);
 //     });
-    
+
 //     test('should handle single sentence input', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const detections: ISentenceDetection[] = [
 //         {
 //           sentence: "I knew this would happen.",
@@ -1395,20 +1401,20 @@ describe("RuleBasedDetector", () => {
 //           }]
 //         }
 //       ];
-      
+
 //       const enhancedDetections = ruleBasedDetectorAny.analyzeContext(detections);
-      
+
 //       // Should return the same detections without changes
 //       expect(enhancedDetections).toEqual(detections);
 //       expect(enhancedDetections[0].detections[0].confidence).toBeCloseTo(0.6);
 //     });
-    
+
 //     test('should handle empty input', () => {
 //       const ruleBasedDetectorAny = detector as any;
-      
+
 //       const emptyDetections: ISentenceDetection[] = [];
 //       const result = ruleBasedDetectorAny.analyzeContext(emptyDetections);
-      
+
 //       expect(result).toEqual(emptyDetections);
 //     });
 //   });

@@ -1,16 +1,23 @@
 import {
-  IBiasOrFallacy, IBiasesFallaciesData, ICompiledBiasOrFallacy, IDetection, TCognitivePatternType, TDetectionFilter, EDetectionFilter, IPatternMatch,
+  IBiasOrFallacy,
+  IBiasesFallaciesData,
+  ICompiledBiasOrFallacy,
+  IDetection,
+  TCognitivePatternType,
+  TDetectionFilter,
+  EDetectionFilter,
+  IPatternMatch,
   ISentenceDetection,
   IAnalysisSummary,
   IGlobalConfidenceModifiers,
   ICompiledPattern,
-  IBiasSpecificConfidenceModifiers
-} from '@/utils';
+  IBiasSpecificConfidenceModifiers,
+} from "@utils/types";
 
-import TextTokenizer from './TextTokenizer';
-interface ICompiledData{
-    biases: ICompiledBiasOrFallacy[];
-    fallacies: ICompiledBiasOrFallacy[];
+import TextTokenizer from "../utils/TextTokenizer";
+interface ICompiledData {
+  biases: ICompiledBiasOrFallacy[];
+  fallacies: ICompiledBiasOrFallacy[];
 }
 
 /**
@@ -371,7 +378,12 @@ class RuleBasedDetector {
 
     //apply bias-specific modifiers if they exist
     if (item.confidence_modifiers) {
-      confidence = this.applyBiasSpecificModifiers(confidence, sentence, matches, item.confidence_modifiers);
+      confidence = this.applyBiasSpecificModifiers(
+        confidence,
+        sentence,
+        matches,
+        item.confidence_modifiers
+      );
     }
 
     // confidence += matches.length * 0.1;
